@@ -66,6 +66,7 @@ public:
 };
 
 // Version: 02
+// Here the typenae T and parameter length replaced at compile time
 template <typename T, int length>
 class Array2
 {
@@ -80,7 +81,7 @@ public:
         }
     }
 
-    T& at(int index)
+    T &at(int index)
     {
         return arr[index];
     }
@@ -88,7 +89,6 @@ public:
 
 int main()
 {
-    // Here the type will be dicided at compile time by compiler
     Array<int> intArr;
     intArr.fill(20);
     cout << intArr.at(4) << endl;
@@ -96,11 +96,23 @@ int main()
     strArr.fill("Sample String");
     cout << strArr.at(4) << endl;
     //---------
-    Array2<int, 10> intArrr2;
-    intArrr2.fill(20);
-    cout << intArrr2.at(4) << endl;
-    Array2<string, 10> strArrr2;
-    strArrr2.fill("Sample String");
-    cout << strArrr2.at(4) << endl;
+    Array2<int, 10> intArr2;
+    intArr2.fill(20);
+    cout << intArr2.at(4) << endl;
+    Array2<string, 10> strArr2;
+    strArr2.fill("abc");
+    // Since we are returning reference from at function we can modify it here as well
+    // Like at index 4 there will be value "123"
+    strArr2.at(4) = "123";
+    for (int i = 0; i < 10; i++)
+        cout << "strArr2[" << i << "] : " << strArr2.at(i) << endl;
+
+    // Important: this is not valid as the input will be taken at runtime and the template
+    // parameter replacement happens at compile time
+    // int x;
+    // cin >> x;
+    // Array2<string, x> strArr3;    //Invlid
+
+    // the parameters should be constant only
     return 0;
 }
