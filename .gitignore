@@ -1,10 +1,10 @@
 #Compiled output files
 *.o 
-*.exe 
 *.out
-
 #Build directories
 build/
-
 #VS Code specific files
 .vscode/
+#Linux-specific temporary files
+*.swp 
+*.swo
