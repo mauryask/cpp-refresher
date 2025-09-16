@@ -10,21 +10,29 @@ void print()
         cout << ele << endl;
     }
 
-    for (int ele : {
-             1,
-             2,
-             4,
-             5,
-             6,
-             8,
-             9,
-         } /*A valid range expression also valid here*/)
+    for (int ele : { 1,2,3,4,5,6,7,8,9,10} /*A valid range expression also valid here*/)
     {
         cout << ele << endl;
     }
 
     temp(arr);
 }
+
+int string_traverse()
+{
+    int count = 0;
+    char string[] = "this iss smaple string to demonstrate the for loop";
+
+    for (char c : string)
+    {
+        if (c == 's')
+        {
+            count++;
+        }
+    }
+    cout << count << endl;
+}
+
 
 void temp(int arr[])
 {
